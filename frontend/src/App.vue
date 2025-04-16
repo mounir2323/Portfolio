@@ -1,20 +1,26 @@
-<script setup>
-import { ref, onMounted } from "vue";
+<template>
+  <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
+</template>
 
-const items = ref([]);
+<script>
+import HelloWorld from './components/HelloWorld.vue'
 
-onMounted(async () => {
-  const res = await fetch("http://localhost:8081/api/items");
-  items.value = await res.json();
-  console.log(items);
-});
+export default {
+  name: 'App',
+  components: {
+    HelloWorld
+  }
+}
 </script>
 
-<template>
-  <div>
-    <h1>Item List</h1>
-    <ul>
-      <li v-for="item in items" :key="item.id">{{ item.name }}</li>
-    </ul>
-  </div>
-</template>
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
